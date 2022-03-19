@@ -1,0 +1,17 @@
+name: 'test'
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: 'ubuntu-latest'
+    timeout-minutes: 5
+    steps:
+      - uses: 'actions/checkout@v2'
+      - uses: 'rhysd/action-setup-vim@v1'
+        with:
+          neovim: true
+          version: nightly
+      - run: make test
